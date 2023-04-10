@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller()
+@Controller('get')
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  // 依赖注入 AppService
+  constructor(private readonly appService: AppService) { }
 
-  @Get()
+  @Get('hello')
   getHello(): string {
-    return this.appService.getHello();
+    return this.appService.getYutao();
   }
 }
