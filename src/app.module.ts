@@ -9,10 +9,22 @@ import { AppService } from './app.service';
 import { DemoController } from './demo/demo.controller';
 import { DemoModule } from './demo/demo.module';
 import { UserModule } from './user/user.module';
+import { UploadModule } from './upload/upload.module';
 
 @Module({
-  imports: [DemoModule, UserModule],
+  imports: [DemoModule, UserModule, UploadModule],
   controllers: [AppController, DemoController],
-  providers: [AppService],
+  providers: [
+    // service 自定义名称注入
+    {
+      provide: 'ABC',
+      useClass: AppService
+    },
+    // 自定义注入值
+    {
+      provide: "JD",
+      useValue: ['TB', 'PDD', 'JD']
+    }
+  ],
 })
 export class AppModule { }
