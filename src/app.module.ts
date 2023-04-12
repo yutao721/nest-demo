@@ -10,9 +10,10 @@ import { DemoController } from './demo/demo.controller';
 import { DemoModule } from './demo/demo.module';
 import { UserModule } from './user/user.module';
 import { UploadModule } from './upload/upload.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [DemoModule, UserModule, UploadModule],
+  imports: [DemoModule, UserModule, UploadModule, PrismaModule],
   controllers: [AppController, DemoController],
   providers: [
     // service 自定义名称注入

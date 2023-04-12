@@ -9,7 +9,7 @@ import { Role } from './role.decorator';
 import { ApiTags, ApiOperation } from '@nestjs/swagger'
 
 
-@UseGuards(RoleGuard)
+// @UseGuards(RoleGuard)
 @Controller('user')
 @ApiTags('用户相关接口')
 export class UserController {
@@ -61,7 +61,6 @@ export class UserController {
 
   @Get(':id')
   findOne(@Param('id', new ParseIntPipe()) id: string) {
-    console.log(typeof id)
     return this.userService.findOne(+id);
   }
 

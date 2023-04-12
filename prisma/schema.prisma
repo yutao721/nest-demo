@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model category {
+  id   Int    @id @default(autoincrement())
+  name String @unique(map: "Category_name_key")
+  post post[] @relation("categorytopost")
+}
+
+model extendedprofile {
+  id        Int    @id @default(autoincrement())
+  biography String
+  userId    Int    @unique(map: "ExtendedProfile_userId_key")
+  user      user   @relation(fields: [userId], references: [id], map: "ExtendedProfile_userId_fkey")
+}
+
+model post {
+  id        Int        @id @default(autoincrement())
+  title     String
+  published Boolean    @default(true)
+  authorId  Int
+  comments  Json?
+  likes     Int        @default(0)
+  views     Int        @default(0)
+  user      user       @relation(fields: [authorId], references: [id], map: "Post_authorId_fkey")
+  category  category[] @relation("categorytopost")
+
+  @@index([authorId], map: "Post_authorId_fkey")
+}
+
+model timeperiod {
+  year    Int
+  quarter Int
+  total   Decimal
+
+  @@id([year, quarter])
+}
+
+model user {
+  id              Int              @id @default(autoincrement())
+  email           String           @unique(map: "User_email_key")
+  name            String?
+  profileViews    Int              @default(0)
+  role            user_role        @default(USER)
+  extendedprofile extendedprofile?
+  post            post[]
+}
+
+enum user_role {
+  USER
+  ADMIN
+}
