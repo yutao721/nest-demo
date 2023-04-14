@@ -42,7 +42,7 @@ async function bootstrap() {
   //   type: VersioningType.URI
   // })
   // 使用session
-  // app.use(session({ secret: "XiaoMan", name: "xm.session", rolling: true, cookie: { maxAge: null } }))
+  app.use(session({ secret: "XiaoMan", name: "xm.session", rolling: true, cookie: { maxAge: null } }))
   // 允许跨域
   // app.enableCors();
 

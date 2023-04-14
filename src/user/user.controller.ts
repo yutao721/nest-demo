@@ -32,18 +32,18 @@ export class UserController {
 
   @Post('create')
   createUser(@Req() req, @Body() body, @Session() session) {
-    console.log(req.session)
-    console.log(session, body)
-    // if (req.session.code.toLocaleLowerCase() === body?.code?.toLocaleLowerCase()) {
-    //   return {
-    //     message: "验证码正确"
-    //   }
-    // } else {
-    //   return {
-    //     message: "验证码错误"
-    //   }
-    // }
-    return {}
+    console.log('session', req.session)
+    // console.log(session, body)
+    if (session.code.toLocaleLowerCase() === body?.code?.toLocaleLowerCase()) {
+      return {
+        message: "验证码正确"
+      }
+    } else {
+      return {
+        message: "验证码错误"
+      }
+    }
+    // return {}
   }
 
 
