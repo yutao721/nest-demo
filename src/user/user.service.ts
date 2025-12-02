@@ -11,17 +11,16 @@ export class UserService {
   constructor(
     private readonly PrismaService: PrismaService,
     private readonly httpService: HttpService,
-  ) { }
-
+  ) {}
 
   create(createUserDto: CreateUserDto) {
     return this.PrismaService.user.create({
-      data: createUserDto
-    })
+      data: createUserDto,
+    });
   }
 
   findAll() {
-    return this.PrismaService.user.findMany()
+    return this.PrismaService.user.findMany();
     // return this.httpService.get('http://localhost:5000/').pipe(map(res => {
     //   console.log(res.data)
     // }));
@@ -32,7 +31,7 @@ export class UserService {
       where: {
         id,
       },
-    })
+    });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
@@ -40,8 +39,8 @@ export class UserService {
       where: {
         id,
       },
-      data: updateUserDto
-    })
+      data: updateUserDto,
+    });
   }
 
   remove(id: number) {
@@ -49,6 +48,6 @@ export class UserService {
       where: {
         id,
       },
-    })
+    });
   }
 }

@@ -1,4 +1,3 @@
-
 // 根模块，用于其他模块的引用和共享
 
 import { Module } from '@nestjs/common';
@@ -19,13 +18,13 @@ import { PrismaModule } from './prisma/prisma.module';
     // service 自定义名称注入
     {
       provide: 'ABC',
-      useClass: AppService
+      useClass: AppService,
     },
     // 自定义注入值
     {
-      provide: "JD",
-      useValue: ['TB', 'PDD', 'JD']
-    }
+      provide: 'JD',
+      useValue: ['TB', 'PDD', 'JD'],
+    },
   ],
 })
-export class AppModule { }
+export class AppModule {}

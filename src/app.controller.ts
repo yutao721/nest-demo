@@ -6,8 +6,8 @@ export class AppController {
   // 依赖注入 AppService
   constructor(
     @Inject('ABC') private readonly appService: AppService,
-    @Inject('JD') private shopList: string[]
-  ) { }
+    @Inject('JD') private shopList: string[],
+  ) {}
 
   @Get('hello')
   getHello(): string {
